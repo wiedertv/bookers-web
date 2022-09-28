@@ -1,0 +1,27 @@
+[
+    {
+        "nombre": "Flash Libros",
+        "identificador": "flash-libros",
+        "imagen": "/flash-libros.jpg"
+    },
+    {
+        "nombre": "Contenido Extra Flash Libros",
+        "identificador": "contenido-extra-flash-libros",
+        "imagen": "/contenido_extra.webp"
+    },
+    {
+        "nombre": "Despierta tu Lector Interior",
+        "identificador": "lector-inteligente",
+        "imagen": "/Lector-Inteligente.jpg"
+    },
+    {
+        "nombre": "Superlector",
+        "identificador": "superlector",
+        "imagen": "/superlector.jpg"
+    },
+    {
+        "nombre": "Los Pasos del Éxito",
+        "identificador": "los-pasos-del-exito",
+        "imagen": "/pasos.jpg"
+    }
+]
