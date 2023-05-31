@@ -1,0 +1,24 @@
+{
+  "courseName": "Flash Libros",
+  "courseId": "flash-libros",
+  "sections": [
+    {
+      "title": "string",
+      "chapters": [
+        {
+          "contenido_clase" :"string",
+          "curso_identificador" : "string",
+          "curso_nombre" : "string",
+          "id" : "string",
+          "nombre_clase" : "string",
+          "nombre_seccion" : "string",
+          "numero_clase" : "string",
+          "numero_seccion" : "string",
+          "tipo_clase" : "string",
+          "url_clase" : "string"
+        }
+      ]
+    }
+  ]
+
+}

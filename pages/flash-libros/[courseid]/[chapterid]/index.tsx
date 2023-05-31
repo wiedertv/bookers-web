@@ -8,6 +8,7 @@ import { device } from '../../../../utils/devices';
 import { useEffect, useState } from 'react';
 
 import { Quiz } from '../../../../components/Quiz';
+import {useAuth} from "../../../../hooks/useAuth";
 
 //#region [Styles Start]
 const Breadcrumbs = styled.ul<{separator?:string}>`
@@ -242,13 +243,11 @@ const Course = () => {
   const [open, setOpen] = useState(false);
   const [course, setCourse] = useState<Data>();
   const { courseid, chapterid } = router.query
-  const { 
-    authenticate, 
+  const {
     isAuthenticated,
-    isWeb3EnableLoading,
-    isWeb3Enabled,
+    isHolder,
     logout, 
-    account } = useMoralis();
+    account } = useAuth();
 
   useEffect(() => {
     if (!isAuthenticated){
@@ -257,7 +256,7 @@ const Course = () => {
   })
 
   useEffect(() => {
-    if(isAuthenticated && account && !course ){
+    if(isAuthenticated && account && !course && router.isReady ){
 /*      fetchCourse(
         courseid as string,
         account,
