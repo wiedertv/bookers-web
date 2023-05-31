@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
-import { useMoralis } from 'react-moralis';
+
 import styled from 'styled-components';
 import { getEllipsisTxt } from '../../utils/formatter';
-import { checkVoucherClaimed, claimVoucher } from '../../utils/functions';
+import {useAuth} from "../../hooks/useAuth";
 
 const ModalWrapper = styled.div<{isOpen: boolean}>`
     display: ${(props) => props.isOpen ? 'flex' : 'none'};
@@ -127,9 +127,9 @@ export const ButtonModal = () => {
     const [voucher, setVoucher] = useState<{voucher: string| null, canClaim: boolean, daysLeft: number}>( {voucher: null, canClaim: true, daysLeft: 0} );
     const { 
         isAuthenticated, 
-        account } = useMoralis();
+        account } = useAuth();
 
-    const claimTicket = async (account:string) => {
+/*    const claimTicket = async (account:string) => {
         setIsLoading(true);
         const response = await claimVoucher(account)
         setIsLoading(false);
@@ -137,12 +137,12 @@ export const ButtonModal = () => {
             setVoucher({voucher: response.voucher, canClaim: false, daysLeft: response.daysLeft});
             setCanClaim(false);
         }
-    }
+    }*/
 
     useEffect(() => {
         if(modalOpen && account){
             setIsLoading(true);
-            checkVoucherClaimed(account).then(res => {
+            /*checkVoucherClaimed(account).then(res => {
                 setIsLoading(false);
                 if(res.voucher){
                     setCanClaim(res.canClaim);
@@ -151,7 +151,7 @@ export const ButtonModal = () => {
             }).catch(err => { 
                 console.log(err);
                 setIsLoading(false);
-            });
+            });*/
         }
         
     }, [account, modalOpen])
@@ -179,7 +179,7 @@ export const ButtonModal = () => {
 
                                                 <div>
                                                     <button onClick={()=> {
-                                                        claimTicket(account || '');
+                                                        /*claimTicket(account || '');*/
                                                     }
                                                     }>
                                                         Sí, generar código

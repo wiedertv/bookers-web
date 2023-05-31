@@ -1,9 +1,8 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
-import { useMoralis } from 'react-moralis';
+
 import styled from 'styled-components';
 import { MainLayout } from '../../layouts/MainLayout'
-import { alreadyFilledHappyMachine, enviarBookers, fetchMaquinaFelicidadTokens } from '../../utils/functions';
 
 const HappyMachineWrapper = styled.div`
     display: flex;

@@ -6,15 +6,8 @@ import Link from 'next/link';
 import { Panels } from '../../../../components/Panels';
 import { device } from '../../../../utils/devices';
 import { useEffect, useState } from 'react';
-import { useMoralis } from 'react-moralis';
-import { fetchCourse } from '../../../../utils/functions';
+
 import { Quiz } from '../../../../components/Quiz';
-
-
-
-
-
-
 
 //#region [Styles Start]
 const Breadcrumbs = styled.ul<{separator?:string}>`
@@ -265,7 +258,7 @@ const Course = () => {
 
   useEffect(() => {
     if(isAuthenticated && account && !course ){
-      fetchCourse(
+/*      fetchCourse(
         courseid as string,
         account,
         chapterid as string
@@ -273,7 +266,7 @@ const Course = () => {
         course=>{
           setCourse(course);
         })
-      .catch();
+      .catch();*/
     }else if(isAuthenticated && account && course && course.actualChapter?.numero_clase !== chapterid){
       const actualChapter = course.sections.find(section => section.chapters.find(chapter => chapter.numero_clase === chapterid));
       if(actualChapter){

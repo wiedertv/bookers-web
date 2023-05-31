@@ -2,15 +2,14 @@ import type { NextPage } from 'next'
 import Image from 'next/image';
 import { forwardRef, useEffect, useState } from 'react';
 import Lottie from 'react-lottie';
-import { useMoralis } from 'react-moralis';
 import styled from 'styled-components'
 import { MainLayout } from '../layouts/MainLayout'
 import animationData from '../utils/animation.json'
 import { device } from '../utils/devices';
-import { checkHolder } from '../utils/functions';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { ButtonModal } from '../components/ButtonModal';
+import {useAuth} from "../hooks/useAuth";
 
 //#region [CSS START]
 const HeroWrapper = styled.main`
@@ -368,9 +367,10 @@ const options = {
 const Home: NextPage = () => {
   const router = useRouter();
   const { 
-    authenticate, 
+    loginMetamask,
+    loginWalletConnect,
     isAuthenticated, 
-    account } = useMoralis();
+    account } = useAuth();
   const [isHolder, setIsHolder] = useState(false);
 
   if (typeof window !== 'undefined') {
@@ -379,18 +379,15 @@ const Home: NextPage = () => {
 }
 
     const handleAuthenticate = () => {
-      authenticate({
-        provider: 'metamask',
-        signingMessage: 'Autenticacion de la aplicacion de Bookers, Estas preparado para entrar a incrementar tu conocimiento ?'
-      })
+      //OPEN MODAL
     };
 
     useEffect(() => {
       if (isAuthenticated && account) {
-        checkHolder(account).then(res => {
+/*        checkHolder(account).then(res => {
           setIsHolder(res);
         }
-        )
+        )*/
       }
     }, [account, isAuthenticated]);
   

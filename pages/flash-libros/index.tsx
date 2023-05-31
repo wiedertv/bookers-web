@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
 import React, { useEffect } from 'react'
-import { useMoralis } from 'react-moralis';
 import styled from 'styled-components';
 import { Card } from '../../components/Card';
 import { MainLayout } from '../../layouts/MainLayout';
 import CourseData from '../../utils/flashlibros.json';
+import {useAuth} from "../../hooks/useAuth";
 
 
 const CardsWrapper = styled.div`
@@ -23,18 +23,12 @@ const FlashLibros = () => {
   const router = useRouter();
   const { 
     isAuthenticated,
-    isWeb3EnableLoading,
-    isWeb3Enabled,
     logout, 
-    } = useMoralis();
+    } = useAuth();
 
     useEffect(() => {
-      
-      if(!isWeb3Enabled && !isWeb3EnableLoading ) {
-        logout();
-      }
       if (!isAuthenticated){
-        router.push('/');
+        logout().then(() => {router.push('/');});
       }
   })
 

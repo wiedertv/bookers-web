@@ -1,7 +1,6 @@
 import React, { FC, PropsWithChildren, useEffect } from 'react'
 import styled from 'styled-components';
 import { device } from '../../utils/devices';
-import { fetchQuiz } from '../../utils/functions';
 
 
 const QuizWrapper = styled.div`

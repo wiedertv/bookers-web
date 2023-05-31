@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { FC, PropsWithChildren, useEffect } from "react";
-import { useMoralis } from "react-moralis";
+import { FC, PropsWithChildren } from "react";
 import styled from "styled-components";
 import { device } from "../../utils/devices";
+import {useAuth} from "../../hooks/useAuth";
 
 
 interface Props {
@@ -53,28 +53,29 @@ img {
 `;
 
 export const AuthenticationButton: FC<PropsWithChildren<Props>> = ({mobile}) => {
-    const { 
-      authenticate, 
+    const {
+      loginWalletConnect,
+      loginMetamask,
       isAuthenticated,
-      isWeb3EnableLoading,
-      isWeb3Enabled,
+      isHolder,
       logout, 
-      account } = useMoralis();
+      account } = useAuth();
   
       const handleClick = () => {
         if(isAuthenticated){
           logout();
         }else{
-          authenticate();
+            popUpModal();
         }
       }
-  
-      useEffect(() => {
-        if(isAuthenticated && !isWeb3EnableLoading && !isWeb3Enabled){
-          logout()
-        }
-      }, [isAuthenticated, account]);
-  
+
+      const popUpModal = () => {
+          console.log("hola mundo");
+          loginMetamask();
+      }
+
+      console.log("IS HOLDER",isHolder)
+      console.log("is Authenticated",isAuthenticated)
     return (
       <AuthButton
         mobile={mobile} 
